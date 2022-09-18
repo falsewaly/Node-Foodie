@@ -9,6 +9,7 @@ const dishes = [
     { id: 3, name: 'soup' },
 ];
 
+// Get all dishes
 router.get('/', async (req, res) => {
     try {
         const dishes = await Dish.find();
@@ -18,6 +19,7 @@ router.get('/', async (req, res) => {
     }
 });
 
+// Get 1 dish
 router.get('/:id', async (req, res) => {
     try {
         const dish = await Dish.findById(req.params.id);
@@ -27,6 +29,7 @@ router.get('/:id', async (req, res) => {
     }
 });
 
+// Update dish
 router.put('/:id', async (req, res) => {
     try {
         const updatedDish = await Dish.findByIdAndUpdate(
@@ -45,6 +48,7 @@ router.put('/:id', async (req, res) => {
     }
 });
 
+// Create dish
 router.post('', async (req, res) => {
     const dish = new Dish({
         name: req.body.name,
@@ -61,6 +65,7 @@ router.post('', async (req, res) => {
     }
 });
 
+// Delete dish
 router.delete('/:id', async (req, res) => {
     try {
         const deletedDish = await Dish.findByIdAndDelete(req.params.id);
